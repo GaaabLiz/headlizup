@@ -38,7 +38,12 @@ class Headliz:
         pinterest_cookie = os.getenv("HEADLIZ_PINTEREST_COOKIE")
         if pinterest_cookie:
             HEADLIZ_DIR.mkdir(parents=True, exist_ok=True)
-            state = parse_cookie_string(pinterest_cookie, ".pinterest.com")
+            # Aggiungiamo sia il dominio con punto che senza per massimizzare la probabilità che Playwright lo invii
+            state_dot = parse_cookie_string(pinterest_cookie, ".pinterest.com")
+            state_bare = parse_cookie_string(pinterest_cookie, "pinterest.com")
+            
+            combined_cookies = state_dot["cookies"] + state_bare["cookies"]
+            state = {"cookies": combined_cookies, "origins": []}
             PINTEREST_AUTH_PATH.write_text(json.dumps(state, indent=2))
 
     async def upload_to_civitai(self, request: UploadToCivitaiRequest) -> UploadToCivitaiResponse:
