@@ -24,7 +24,6 @@ from headlizup.pinterest.config import (
     PINTEREST_BASE_URL,
     TEMP_DIR,
     SCREENSHOTS_DIR,
-    PINTEREST_AUTH_STATE_PATH,
 )
 from headlizup.pinterest.models import UploadToPinterestRequest, UploadToPinterestResponse
 from headlizup.pinterest.pages.login_page import PinterestLoginPage

@@ -22,9 +22,8 @@ PINTEREST_HEADLESS = os.getenv("GBNXD_API_BROWSER_PINTEREST_HEADLESS", "true").l
 
 # ── Paths ────────────────────────────────────────────────────────────────────
 
-PINTEREST_AUTH_STATE_PATH = "/code/pinterest_auth.json"
-TEMP_DIR = "/app/temp"
-SCREENSHOTS_DIR = "/app/screenshots"
+
+from headlizup.config import TEMP_DIR, SCREENSHOTS_DIR
 
 # ── Timeouts (ms) ───────────────────────────────────────────────────────────
 

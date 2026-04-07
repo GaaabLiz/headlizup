@@ -10,10 +10,10 @@ import logging
 from playwright.async_api import async_playwright, Browser, BrowserContext, Playwright
 
 from headlizup.pinterest.config import (
-    PINTEREST_AUTH_STATE_PATH,
     PINTEREST_HEADLESS,
     NAVIGATION_TIMEOUT,
 )
+from headlizup.config import PINTEREST_AUTH_PATH
 
 logger = logging.getLogger("pinterest.browser")
 
@@ -49,11 +49,11 @@ class PinterestBrowserManager:
         active_contexts = len(browser.contexts)
         logger.debug("[BROWSER] Creating new context (currently %d active context(s))", active_contexts)
 
-        if os.path.exists(PINTEREST_AUTH_STATE_PATH):
-            state_size = os.path.getsize(PINTEREST_AUTH_STATE_PATH)
-            logger.info("[BROWSER] Restoring auth state from %s (%.1f KB)", PINTEREST_AUTH_STATE_PATH, state_size / 1024)
+        if os.path.exists(PINTEREST_AUTH_PATH):
+            state_size = os.path.getsize(PINTEREST_AUTH_PATH)
+            logger.info("[BROWSER] Restoring auth state from %s (%.1f KB)", PINTEREST_AUTH_PATH, state_size / 1024)
             context = await browser.new_context(
-                storage_state=PINTEREST_AUTH_STATE_PATH,
+                storage_state=PINTEREST_AUTH_PATH,
                 viewport={"width": 1280, "height": 900},
                 user_agent=(
                     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
@@ -62,7 +62,7 @@ class PinterestBrowserManager:
             )
             logger.debug("[BROWSER] Context created with restored auth state")
         else:
-            logger.info("[BROWSER] No auth state file found at %s — creating fresh context", PINTEREST_AUTH_STATE_PATH)
+            logger.info("[BROWSER] No auth state file found at %s — creating fresh context", PINTEREST_AUTH_PATH)
             context = await browser.new_context(
                 viewport={"width": 1280, "height": 900},
                 user_agent=(
@@ -79,10 +79,10 @@ class PinterestBrowserManager:
     @staticmethod
     async def save_auth_state(context: BrowserContext) -> None:
         """Persist cookies and local-storage so next request skips login."""
-        logger.info("[BROWSER] Saving auth state to %s", PINTEREST_AUTH_STATE_PATH)
-        os.makedirs(os.path.dirname(PINTEREST_AUTH_STATE_PATH), exist_ok=True)
-        await context.storage_state(path=PINTEREST_AUTH_STATE_PATH)
-        state_size = os.path.getsize(PINTEREST_AUTH_STATE_PATH)
+        logger.info("[BROWSER] Saving auth state to %s", PINTEREST_AUTH_PATH)
+        os.makedirs(os.path.dirname(PINTEREST_AUTH_PATH), exist_ok=True)
+        await context.storage_state(path=PINTEREST_AUTH_PATH)
+        state_size = os.path.getsize(PINTEREST_AUTH_PATH)
         logger.info("[BROWSER] Auth state saved (%.1f KB)", state_size / 1024)
 
     async def close(self) -> None:
