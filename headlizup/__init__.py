@@ -6,7 +6,10 @@ from headlizup.pinterest.service import upload_to_pinterest
 from headlizup.pinterest.models import UploadToPinterestRequest, UploadToPinterestResponse
 from headlizup.pinterest.browser import PinterestBrowserManager
 
+from headlizup.core import Headliz
+
 __all__ = [
+    "Headliz",
     "upload_to_civitai",
     "UploadToCivitaiRequest",
     "UploadToCivitaiResponse",
