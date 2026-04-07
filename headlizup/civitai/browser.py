@@ -10,10 +10,10 @@ import logging
 from playwright.async_api import async_playwright, Browser, BrowserContext, Playwright
 
 from headlizup.civitai.config import (
-    AUTH_STATE_PATH,
     GBNXD_API_BROWSER_CIVITAI_HEADLESS,
     NAVIGATION_TIMEOUT,
 )
+from headlizup.config import CIVITAI_AUTH_PATH
 
 logger = logging.getLogger("browser")
 
@@ -48,14 +48,14 @@ class BrowserManager:
         active_contexts = len(browser.contexts)
         logger.debug("[BROWSER] Creating new context (currently %d active context(s))", active_contexts)
 
-        if os.path.exists(AUTH_STATE_PATH):
-            state_size = os.path.getsize(AUTH_STATE_PATH)
-            logger.info("[BROWSER] Restoring auth state from %s (%.1f KB)", AUTH_STATE_PATH, state_size / 1024)
+        if os.path.exists(CIVITAI_AUTH_PATH):
+            state_size = os.path.getsize(CIVITAI_AUTH_PATH)
+            logger.info("[BROWSER] Restoring auth state from %s (%.1f KB)", CIVITAI_AUTH_PATH, state_size / 1024)
             context = await browser.new_context(
-                storage_state=AUTH_STATE_PATH,
+                storage_state=CIVITAI_AUTH_PATH,
             )
         else:
-            logger.info("[BROWSER] No auth state found at %s — creating fresh context", AUTH_STATE_PATH)
+            logger.info("[BROWSER] No auth state found at %s — creating fresh context", CIVITAI_AUTH_PATH)
             context = await browser.new_context()
 
         context.set_default_navigation_timeout(NAVIGATION_TIMEOUT)
@@ -65,10 +65,10 @@ class BrowserManager:
     @staticmethod
     async def save_auth_state(context: BrowserContext) -> None:
         """Persist cookies and local-storage so next request skips login."""
-        logger.info("[BROWSER] Saving auth state to %s", AUTH_STATE_PATH)
-        os.makedirs(os.path.dirname(AUTH_STATE_PATH), exist_ok=True)
-        await context.storage_state(path=AUTH_STATE_PATH)
-        state_size = os.path.getsize(AUTH_STATE_PATH)
+        logger.info("[BROWSER] Saving auth state to %s", CIVITAI_AUTH_PATH)
+        os.makedirs(os.path.dirname(CIVITAI_AUTH_PATH), exist_ok=True)
+        await context.storage_state(path=CIVITAI_AUTH_PATH)
+        state_size = os.path.getsize(CIVITAI_AUTH_PATH)
         logger.info("[BROWSER] Auth state saved (%.1f KB)", state_size / 1024)
 
     async def close(self) -> None:

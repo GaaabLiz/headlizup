@@ -20,7 +20,8 @@ import os
 import uuid
 
 from headlizup.civitai.browser import BrowserManager
-from headlizup.civitai.config import CIVITAI_BASE_URL, TEMP_DIR, SCREENSHOTS_DIR, AUTH_STATE_PATH
+from headlizup.civitai.config import CIVITAI_BASE_URL, TEMP_DIR, SCREENSHOTS_DIR
+from headlizup.config import CIVITAI_AUTH_PATH
 from headlizup.civitai.models import UploadToCivitaiRequest, UploadToCivitaiResponse
 from headlizup.civitai.pages.login_page import LoginPage
 from headlizup.civitai.pages.upload_page import UploadPage
@@ -133,11 +134,11 @@ async def upload_to_civitai(
 
     try:
         # ── Step 0: Auth state required ──────────────────────────────────────
-        if not os.path.exists(AUTH_STATE_PATH):
-            logger.error("Auth state file not found at %s", AUTH_STATE_PATH)
+        if not os.path.exists(CIVITAI_AUTH_PATH):
+            logger.error("Auth state file not found at %s", CIVITAI_AUTH_PATH)
             return UploadToCivitaiResponse(
                 success=False,
-                message=f"Auth state file not found at {AUTH_STATE_PATH}. "
+                message=f"Auth state file not found at {CIVITAI_AUTH_PATH}. "
                     "Please provide a valid civitai_auth.json to authenticate with Civitai.",
             )
 
@@ -157,7 +158,7 @@ async def upload_to_civitai(
         login_page = LoginPage(page)
         await login_page.dismiss_cookie_consent()
 
-        if os.path.exists(AUTH_STATE_PATH):
+        if os.path.exists(CIVITAI_AUTH_PATH):
             logger.info("Auth state found — trusting saved session")
         elif not await login_page.is_logged_in():
             logger.info("Not logged in — performing login")
