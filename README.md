@@ -125,6 +125,52 @@ async def main():
 asyncio.run(main())
 ```
 
+### 5. Uso tramite Docker (REST API)
+
+Headliz include un server FastAPI e la configurazione Docker pronta all'uso, permettendoti di usarlo come servizio REST containerizzato indipendente.
+
+1. **Configura l'ambiente**: Assicurati di avere un file `.env` nella directory principale contenente i tuoi cookie:
+```env
+HEADLIZ_CIVITAI_COOKIE="tuo_cookie_civitai"
+HEADLIZ_PINTEREST_COOKIE="tuo_cookie_pinterest"
+```
+
+2. **Avvia il container**: Usa Docker Compose per costruire e lanciare il server:
+```bash
+docker-compose up --build -d
+```
+Questo comando avvierà i servizi su `http://localhost:8000` e creerà un volume persistente per la directory `~/.headliz`. Oltre a mantenere i cookie di sessione sicuri, evita di ricaricarli ad ogni avvio.
+
+3. **Usa l'API**: L'endpoint `/docs` (es. `http://localhost:8000/docs`) offre l'interfaccia interattiva Swagger per testare le API.
+Puoi inviare file in formato base64 via HTTP POST:
+
+**Esempio di richiesta per Civitai (`POST /civitai/upload`):**
+```bash
+curl -X 'POST' \
+  'http://localhost:8000/civitai/upload' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "image_base64": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+  "title": "Docker Test",
+  "tags": ["test"],
+  "description": "Uploaded via Headliz REST API"
+}'
+```
+
+**Esempio di richiesta per Pinterest (`POST /pinterest/upload`):**
+```bash
+curl -X 'POST' \
+  'http://localhost:8000/pinterest/upload' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "image_base64": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+  "title": "Docker Pinterest Test",
+  "description": "Uploaded via Headliz REST API",
+  "tags": ["test"],
+  "board_name": "Test Board"
+}'
+```
+
 ### Troubleshooting
 - **Authentication fails**: Your session cookies might have expired. When you log out and log back in, cookies change. Simply repeat *Step 2* to grab the new `Cookie` string and update your environment variables.
-- **Missing Browser**: If you get an error from Playwright about a missing browser, ensure you ran `playwright install chromium`.
+- **Missing Browser**: If you get an error from Playwright about a missing browser, ensure you ran `playwright install chromium` (non necessario se usi Docker, fa tutto lui).

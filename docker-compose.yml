@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  headliz-api:
+    build: .
+    container_name: headliz_api
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      # Mappiamo una cartella locale .headliz all'interno di /data nel container
+      # in modo che i file json con i cookie di sessione siano persistenti
+      # e non vengano persi ad ogni riavvio del container.
+      - ~/.headliz:/data
+    restart: unless-stopped
