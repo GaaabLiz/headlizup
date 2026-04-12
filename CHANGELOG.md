@@ -1,3 +1,20 @@
+## [0.1.0] - 2026-04-12
+
+### 🚀 Features
+
+- Add project metadata including name, version, description, and author information
+
+### 💼 Other
+
+- V0.1.0
+
+### 🚜 Refactor
+
+- Rename package from headlizup to headliz and update imports accordingly
+
+### ⚙️ Miscellaneous Tasks
+
+- Update changelog [skip ci]
 ## [0.0.2] - 2026-04-08
 
 ### 🚀 Features
