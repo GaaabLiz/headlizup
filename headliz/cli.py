@@ -5,16 +5,16 @@ from rich.console import Console
 from rich.logging import RichHandler
 import logging
 
-from headlizup.logger import setup_logger
-from headlizup.civitai.service import upload_to_civitai
-from headlizup.civitai.models import UploadToCivitaiRequest
-from headlizup.civitai.browser import BrowserManager
+from headliz.logger import setup_logger
+from headliz.civitai.service import upload_to_civitai
+from headliz.civitai.models import UploadToCivitaiRequest
+from headliz.civitai.browser import BrowserManager
 
-from headlizup.pinterest.service import upload_to_pinterest
-from headlizup.pinterest.models import UploadToPinterestRequest
-from headlizup.pinterest.browser import PinterestBrowserManager
+from headliz.pinterest.service import upload_to_pinterest
+from headliz.pinterest.models import UploadToPinterestRequest
+from headliz.pinterest.browser import PinterestBrowserManager
 
-app = typer.Typer(help="Headlizup: Browser-automated uploads for Civitai and Pinterest.")
+app = typer.Typer(help="Headliz: Browser-automated uploads for Civitai and Pinterest.")
 civitai_app = typer.Typer(help="Civitai upload commands.")
 pinterest_app = typer.Typer(help="Pinterest upload commands.")
 

@@ -19,12 +19,12 @@ import logging
 import os
 import uuid
 
-from headlizup.civitai.browser import BrowserManager
-from headlizup.civitai.config import CIVITAI_BASE_URL, TEMP_DIR, SCREENSHOTS_DIR
-from headlizup.config import CIVITAI_AUTH_PATH
-from headlizup.civitai.models import UploadToCivitaiRequest, UploadToCivitaiResponse
-from headlizup.civitai.pages.login_page import LoginPage
-from headlizup.civitai.pages.upload_page import UploadPage
+from headliz.civitai.browser import BrowserManager
+from headliz.civitai.config import CIVITAI_BASE_URL, TEMP_DIR, SCREENSHOTS_DIR
+from headliz.config import CIVITAI_AUTH_PATH
+from headliz.civitai.models import UploadToCivitaiRequest, UploadToCivitaiResponse
+from headliz.civitai.pages.login_page import LoginPage
+from headliz.civitai.pages.upload_page import UploadPage
 
 logger = logging.getLogger("civitai.service")
 

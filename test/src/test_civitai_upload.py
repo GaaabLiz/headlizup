@@ -3,7 +3,7 @@ import base64
 import asyncio
 import httpx
 from dotenv import load_dotenv
-from headlizup import Headliz, UploadToCivitaiRequest
+from headliz import Headliz, UploadToCivitaiRequest
 
 # Carica le variabili d'ambiente dal file .env nella root del progetto
 # Cerchiamo il file .env partendo dalla cartella corrente e risalendo se necessario (comportamento standard di load_dotenv)

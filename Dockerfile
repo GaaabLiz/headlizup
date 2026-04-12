@@ -34,10 +34,10 @@ RUN mkdir -p /data
 
 # Copia tutto il resto dell'applicazione
 COPY README.md ./
-COPY headlizup/ ./headlizup/
+COPY headliz/ ./headliz/
 
 # Esponi la porta 8000 utilizzata da FastAPI/Uvicorn
 EXPOSE 8000
 
 # Avvia l'app FastAPI di default
-CMD ["uvicorn", "headlizup.api:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "headliz.api:app", "--host", "0.0.0.0", "--port", "8000"]

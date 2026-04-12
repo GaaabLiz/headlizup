@@ -1,5 +1,5 @@
 [project]
-name = "headlizup"
+name = "headliz"
 version = "0.0.2"
 description = "Add your description here"
 readme = "README.md"
@@ -20,10 +20,10 @@ dependencies = [
 ]
 
 [project.scripts]
-headlizup = "headlizup.cli:app"
+headliz = "headliz.cli:app"
 
 [tool.hatch.build.targets.wheel]
-packages = ["headlizup"]
+packages = ["headliz"]
 
 [build-system]
 requires = ["hatchling"]

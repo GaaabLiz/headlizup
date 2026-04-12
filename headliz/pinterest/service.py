@@ -19,15 +19,15 @@ import logging
 import os
 import uuid
 
-from headlizup.pinterest.browser import PinterestBrowserManager
-from headlizup.pinterest.config import (
+from headliz.pinterest.browser import PinterestBrowserManager
+from headliz.pinterest.config import (
     PINTEREST_BASE_URL,
     TEMP_DIR,
     SCREENSHOTS_DIR,
 )
-from headlizup.pinterest.models import UploadToPinterestRequest, UploadToPinterestResponse
-from headlizup.pinterest.pages.login_page import PinterestLoginPage
-from headlizup.pinterest.pages.upload_page import PinterestUploadPage
+from headliz.pinterest.models import UploadToPinterestRequest, UploadToPinterestResponse
+from headliz.pinterest.pages.login_page import PinterestLoginPage
+from headliz.pinterest.pages.upload_page import PinterestUploadPage
 
 logger = logging.getLogger("pinterest.service")
 

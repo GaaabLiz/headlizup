@@ -1,18 +1,18 @@
 import os
 import json
-from headlizup.config import (
+from headliz.config import (
     HEADLIZ_DIR,
     CIVITAI_AUTH_PATH,
     PINTEREST_AUTH_PATH,
     parse_cookie_string
 )
-from headlizup.civitai.service import upload_to_civitai
-from headlizup.civitai.models import UploadToCivitaiRequest, UploadToCivitaiResponse
-from headlizup.civitai.browser import BrowserManager
+from headliz.civitai.service import upload_to_civitai
+from headliz.civitai.models import UploadToCivitaiRequest, UploadToCivitaiResponse
+from headliz.civitai.browser import BrowserManager
 
-from headlizup.pinterest.service import upload_to_pinterest
-from headlizup.pinterest.models import UploadToPinterestRequest, UploadToPinterestResponse
-from headlizup.pinterest.browser import PinterestBrowserManager
+from headliz.pinterest.service import upload_to_pinterest
+from headliz.pinterest.models import UploadToPinterestRequest, UploadToPinterestResponse
+from headliz.pinterest.browser import PinterestBrowserManager
 
 class Headliz:
     def __init__(self):

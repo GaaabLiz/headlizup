@@ -19,7 +19,7 @@ Instead of configuring complex browser integrations or dealing with manual login
 As this package requires Playwright, make sure you install it and its browser dependencies:
 
 ```bash
-pip install headlizup
+pip install headliz
 playwright install chromium
 ```
 
@@ -78,7 +78,7 @@ Once your environment variables are set, you can use the library in your Python 
 
 ```python
 import asyncio
-from headlizup import Headliz, UploadToCivitaiRequest, UploadToPinterestRequest
+from headliz import Headliz, UploadToCivitaiRequest, UploadToPinterestRequest
 
 async def main():
     # Calling the class automatically reads the environment variables 

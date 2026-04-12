@@ -9,11 +9,11 @@ import os
 import logging
 from playwright.async_api import async_playwright, Browser, BrowserContext, Playwright
 
-from headlizup.pinterest.config import (
+from headliz.pinterest.config import (
     PINTEREST_HEADLESS,
     NAVIGATION_TIMEOUT,
 )
-from headlizup.config import PINTEREST_AUTH_PATH
+from headliz.config import PINTEREST_AUTH_PATH
 
 logger = logging.getLogger("pinterest.browser")
 

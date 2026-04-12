@@ -9,11 +9,11 @@ import os
 import logging
 from playwright.async_api import async_playwright, Browser, BrowserContext, Playwright
 
-from headlizup.civitai.config import (
+from headliz.civitai.config import (
     GBNXD_API_BROWSER_CIVITAI_HEADLESS,
     NAVIGATION_TIMEOUT,
 )
-from headlizup.config import CIVITAI_AUTH_PATH
+from headliz.config import CIVITAI_AUTH_PATH
 
 logger = logging.getLogger("browser")
 

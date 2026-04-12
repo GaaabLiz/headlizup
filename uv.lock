@@ -122,7 +122,7 @@ wheels = [
 ]
 
 [[package]]
-name = "headlizup"
+name = "headliz"
 version = "0.0.2"
 source = { editable = "." }
 dependencies = [

@@ -3,7 +3,7 @@ import base64
 import asyncio
 import httpx
 from dotenv import load_dotenv
-from headlizup import Headliz, UploadToPinterestRequest
+from headliz import Headliz, UploadToPinterestRequest
 
 # Carica le variabili d'ambiente
 load_dotenv()
@@ -40,7 +40,7 @@ async def test_pinterest_upload():
             image_base64=img_b64,
             title="Headliz Pinterest Test",
             description="Questo è un Pin di test creato automaticamente con Headliz.",
-            link="https://github.com/gabliz/headlizup"
+            link="https://github.com/gabliz/headliz"
         )
         
         # 4. Esecuzione upload

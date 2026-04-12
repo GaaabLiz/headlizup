@@ -9,7 +9,7 @@ import logging
 import os
 from playwright.async_api import Page, expect
 
-from headlizup.civitai.config import (
+from headliz.civitai.config import (
     SELECTORS,
     CIVITAI_LOGIN_URL,
     GBNXD_API_BROWSER_CIVITAI_EMAIL,

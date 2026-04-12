@@ -11,7 +11,7 @@ import os
 import random
 from playwright.async_api import Page
 
-from headlizup.pinterest.config import (
+from headliz.pinterest.config import (
     SELECTORS,
     PINTEREST_LOGIN_URL,
     PINTEREST_EMAIL,

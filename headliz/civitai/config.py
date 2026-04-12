@@ -23,7 +23,7 @@ GBNXD_API_BROWSER_CIVITAI_HEADLESS = os.getenv("GBNXD_API_BROWSER_CIVITAI_HEADLE
 # ── Paths ────────────────────────────────────────────────────────────────────
 
 
-from headlizup.config import TEMP_DIR, SCREENSHOTS_DIR
+from headliz.config import TEMP_DIR, SCREENSHOTS_DIR
 
 # ── Timeouts (ms) ───────────────────────────────────────────────────────────
 

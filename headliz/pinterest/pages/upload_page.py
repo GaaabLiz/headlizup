@@ -18,7 +18,7 @@ import os
 import random
 from playwright.async_api import Page, Locator
 
-from headlizup.pinterest.config import (
+from headliz.pinterest.config import (
     SELECTORS,
     PINTEREST_PIN_CREATION_URL,
     SCREENSHOTS_DIR,

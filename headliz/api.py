@@ -2,12 +2,12 @@ import logging
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 
-from headlizup.core import Headliz
-from headlizup.civitai.models import UploadToCivitaiRequest, UploadToCivitaiResponse
-from headlizup.pinterest.models import UploadToPinterestRequest, UploadToPinterestResponse
+from headliz.core import Headliz
+from headliz.civitai.models import UploadToCivitaiRequest, UploadToCivitaiResponse
+from headliz.pinterest.models import UploadToPinterestRequest, UploadToPinterestResponse
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-logger = logging.getLogger("headlizup.api")
+logger = logging.getLogger("headliz.api")
 
 app = FastAPI(
     title="Headliz Web API",

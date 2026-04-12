@@ -9,7 +9,7 @@ import logging
 import os
 from playwright.async_api import Page
 
-from headlizup.civitai.config import (
+from headliz.civitai.config import (
     SELECTORS,
     CIVITAI_POSTS_CREATE_URL,
     SCREENSHOTS_DIR,
